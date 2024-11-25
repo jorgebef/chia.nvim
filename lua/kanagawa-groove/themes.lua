@@ -116,7 +116,7 @@
 ---@param palette PaletteColors
 ---@return ThemeColors
 return function(palette)
-	local gutter_bg = require("kanagawa-paper.config").options.gutter and palette.sumiInk4 or "none"
+	local gutter_bg = require("kanagawa-groove.config").options.gutter and palette.sumiInk4 or "none"
 
 	return {
 		modes = {
@@ -150,7 +150,7 @@ return function(palette)
 			nontext = palette.sumiInk6,
 			whitespace = palette.sumiInk6,
 
-			win_separator = palette.dragonViolet,
+			win_separator = palette.sumiInk5,
 			indent = palette.sumiInk5,
 			picker = palette.dragonRed,
 			pmenu = {

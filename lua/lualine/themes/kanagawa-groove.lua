@@ -1,4 +1,4 @@
-local colors = require("kanagawa-paper.colors").setup()
+local colors = require("kanagawa-groove.colors").setup()
 local theme = colors.theme
 
 local kanagawa_paper = {}

@@ -4,7 +4,7 @@ local M = {}
 ---@param opts? KanagawaConfig
 function M.setup(colors, opts)
 	local theme = colors.theme
-	opts = opts or require("kanagawa-paper.config").options
+	opts = opts or require("kanagawa-groove.config").options
 
 	return {
 		-- *Comment	any comment

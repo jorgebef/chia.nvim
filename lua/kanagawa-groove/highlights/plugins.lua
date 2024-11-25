@@ -3,9 +3,9 @@ local M = {}
 ---@param colors KanagawaColors
 ---@param opts? KanagawaConfig
 function M.setup(colors, opts)
-	opts = opts or require("kanagawa-paper.config").options
+	opts = opts or require("kanagawa-groove.config").options
 
-	local color = require("kanagawa-paper.lib.color")
+	local color = require("kanagawa-groove.lib.color")
 	local theme = colors.theme
 	local palette = colors.palette
 
