@@ -69,7 +69,7 @@ function M.setup(colors, opts)
 		MsgArea = vim.o.cmdheight == 0 and { link = "StatusLine" }
 			or { fg = theme.ui.fg_gray, bg = not opts.transparent and theme.ui.bg or "NONE" },
 		-- MsgSeparator	Separator for scrolled messages |msgsep|.
-		MsgSeparator = { bg = vim.o.cmdheight == 0 and theme.ui.bg or theme.ui.bg_m3 },
+		MsgSeparator = { bg = vim.o.cmdheight == 0 and theme.ui.bg or theme.ui.bg_m1 },
 		-- MoreMsg		|more-prompt|
 		MoreMsg = { fg = theme.diag.info },
 		-- NonText		'@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
@@ -120,9 +120,9 @@ function M.setup(colors, opts)
 		-- SpellRare	Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
 		SpellRare = { undercurl = opts.undercurl, underline = not opts.undercurl, sp = theme.diag.warning },
 		-- StatusLine	Status line of current window.
-		StatusLine = { fg = theme.ui.fg_gray, bg = theme.ui.bg_m3 },
+		StatusLine = { fg = theme.ui.fg_gray, bg = theme.ui.bg_m1 },
 		-- StatusLineNC	Status lines of not-current windows. Note: If this is equal to "StatusLine", Vim will use "^^^" in the status line of the current window.
-		StatusLineNC = { fg = theme.ui.nontext, bg = theme.ui.bg_m3 },
+		StatusLineNC = { fg = theme.ui.nontext, bg = theme.ui.bg_m1 },
 		-- TabLine		Tab pages line, not active tab page label.
 		TabLine = { bg = theme.ui.bg_tabline, fg = theme.ui.special },
 		-- TabLineFill	Tab pages line, where there are no labels.
@@ -142,9 +142,9 @@ function M.setup(colors, opts)
 		-- WildMenu	Current match in 'wildmenu' completion.
 		WildMenu = { link = "Pmenu" },
 		-- WinBar		Window bar of current window.
-		WinBar = { fg = theme.ui.fg_dim, bg = "NONE" },
+		WinBar = { fg = theme.ui.fg, bg = "NONE" },
 		-- WinBarNC	Window bar of not-current windows.
-		WinBarNC = { fg = theme.ui.fg_dim, bg = opts.dimInactive and theme.ui.bg_dim or "NONE" },
+		WinBarNC = { fg = theme.ui.fg_dimmer, bg = "NONE" },
 
 		-- SignColumnSB = { link = "SignColumn" },
 		-- NormalSB = { link = "Normal" },

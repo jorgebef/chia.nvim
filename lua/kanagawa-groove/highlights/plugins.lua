@@ -9,19 +9,7 @@ function M.setup(colors, opts)
 	local theme = colors.theme
 	local palette = colors.palette
 
-	return {
-		-- Gitsigns
-		GitSignsAdd = { fg = theme.vcs.added, bg = theme.ui.bg_gutter },
-		GitSignsChange = { fg = theme.vcs.changed, bg = theme.ui.bg_gutter },
-		GitSignsDelete = { fg = theme.vcs.removed, bg = theme.ui.bg_gutter },
-
-		-- Gitgutter
-		GitGutterAdd = { link = "GitSignsAdd" },
-		GitGutterChange = { link = "GitSignsChange" },
-		GitGutterDelete = { link = "GitSignsDelete" },
-		GitGutterAddLineNr = { link = "GitSignsAdd" },
-		GitGutterChangeLineNr = { link = "GitSignsChange" },
-		GitGutterDeleteLineNr = { link = "GitSignsDelete" },
+	local ret = {
 
 		-- Neogit
 		NeogitHunkHeader = { fg = theme.syn.constant },
@@ -45,67 +33,6 @@ function M.setup(colors, opts)
 		-- TreeSitter Extensions
 		TreesitterContext = { link = "Folded" },
 		TreesitterContextLineNumber = { fg = theme.ui.special, bg = theme.ui.bg_gutter },
-
-		-- Telescope
-		TelescopeTitle = { fg = palette.sumiInk0, bg = palette.dragonBlue, bold = true },
-		TelescopeBorder = { fg = theme.ui.float.fg_border, bg = theme.ui.bg },
-		TelescopeSelection = { link = "CursorLine" },
-		TelescopeSelectionCaret = { link = "CursorLineNr" },
-		TelescopePromptNormal = { bg = theme.ui.bg_p2 },
-		TelescopePromptBorder = { fg = theme.ui.bg_p2, bg = theme.ui.bg_p2 },
-		TelescopeResultsClass = { link = "Structure" },
-		TelescopeResultsStruct = { link = "Structure" },
-		TelescopeResultsField = { link = "@field" },
-		TelescopeResultsMethod = { link = "Function" },
-		TelescopeResultsVariable = { link = "@variable" },
-		TeleScopeResultsTitle = { fg = palette.sumiInk0, bg = palette.dragonOrange, bold = true },
-		TelescopeResultsNormal = { fg = theme.ui.fg, bg = theme.ui.bg_p1 },
-		TelescopeResultsBorder = { fg = theme.ui.bg_p2, bg = theme.ui.bg_p1 },
-		TeleScopePreviewTitle = { fg = palette.sumiInk0, bg = palette.waveAqua1, bold = true },
-		TelescopePreviewNormal = { bg = theme.ui.bg },
-		TelescopePreviewBorder = { bg = theme.ui.bg, fg = theme.ui.bg_p2 },
-
-		-- NvimTree
-		NvimTreeIndentMarker = { fg = theme.ui.indent },
-		NvimTreeNormal = { link = "Normal" },
-		NvimTreeNormalNC = { link = "NvimTreeNormal" },
-		NvimTreeGitDirty = { fg = theme.vcs.changed },
-		NvimTreeGitNew = { fg = theme.vcs.added },
-		NvimTreeGitDeleted = { fg = theme.vcs.removed },
-		NvimTreeGitStaged = { fg = theme.vcs.added },
-		NvimTreeSpecialFile = { fg = theme.syn.special1 },
-		NvimTreeImageFile = { fg = theme.syn.special2 },
-		NvimTreeSymlink = { link = "Type" },
-		NvimTreeFolderName = { link = "Directory" },
-		NvimTreeExecFile = { fg = theme.syn.string, bold = true },
-		NvimTreeRootFolder = { fg = palette.autumnRed, bold = true },
-		NvimTreeOpenedFile = { fg = theme.syn.special1, italic = true },
-		NvimTreeOpenedFolderName = { fg = palette.dragonBlue },
-		NvimTreeWinSeparator = { link = "WinSeparator" },
-		NvimTreeWindowPicker = { bg = theme.ui.bg_m1, fg = theme.ui.picker, bold = true },
-
-		-- NeoTree
-		NeoTreeNormal = { link = "NormalFloat" },
-		NeoTreeNormalNC = { link = "NormalFloat" },
-		NeoTreeFloatTitle = { fg = theme.ui.bg_m3, bg = palette.dragonGray3, bold = true },
-		NeoTreeFloatBorder = { fg = theme.ui.bg_p2, bg = theme.ui.float.bg_border },
-		NeoTreeWinSeparator = { link = "WinSeparator" },
-		NeoTreeTabInactive = { link = "TabLine" },
-		NeoTreeTabActive = { link = "TabLineSel" },
-		NeoTreeTabSeparatorInactive = { link = "NeoTreeTabInactive" },
-		NeoTreeTabSeparatorActive = { link = "NeoTreeTabActive" },
-		NeoTreeRootName = { fg = palette.dragonRed, bold = true },
-		NeoTreeModified = { link = "String" },
-		NeoTreeGitModified = { fg = theme.vcs.changed },
-		NeoTreeGitAdded = { fg = theme.vcs.added },
-		NeoTreeGitDeleted = { fg = theme.vcs.removed },
-		NeoTreeGitStaged = { fg = theme.vcs.added },
-		NeoTreeGitConflict = { fg = theme.diag.error },
-		NeoTreeGitUntracked = { link = "NeoTreeGitModified", default = true },
-		NeoTreeGitUnstaged = { link = "NeoTreeGitModified", default = true },
-		NeoTreeIndentMarker = { fg = theme.ui.indent },
-		NeoTreeFileNameOpened = { fg = theme.syn.special1, italic = true },
-		NeoTreeSymbolicLinkTarget = { link = "Type" },
 
 		-- WindowPicker
 		WindowPickerStatusLine = { fg = theme.ui.picker },
@@ -181,46 +108,46 @@ function M.setup(colors, opts)
 		healthSuccess = { fg = theme.diag.ok },
 		healthWarning = { fg = theme.diag.warning },
 
-		-- Cmp
-		CmpDocumentation = { link = "NormalFloat" },
-		CmpDocumentationBorder = { link = "FloatBorder" },
-		CmpCompletion = { link = "Pmenu" },
-		CmpCompletionSel = { fg = "NONE", bg = theme.ui.pmenu.bg_sel },
-		CmpCompletionBorder = { fg = theme.ui.bg_search, bg = theme.ui.pmenu.bg },
-		CmpCompletionThumb = { link = "PmenuThumb" },
-		CmpCompletionSbar = { link = "PmenuSbar" },
-		CmpItemAbbr = { fg = theme.ui.pmenu.fg },
-		CmpItemAbbrDeprecated = { fg = theme.syn.comment, strikethrough = true },
-		CmpItemAbbrMatch = { fg = theme.syn.fun },
-		CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
-		CmpItemKindDefault = { fg = theme.ui.fg_dim },
-		CmpItemMenu = { fg = theme.ui.fg_dim },
-		CmpItemKindText = { fg = theme.ui.fg },
-		CmpItemKindMethod = { link = "@function.method" },
-		CmpItemKindFunction = { link = "Function" },
-		CmpItemKindConstructor = { link = "@constructor" },
-		CmpItemKindField = { link = "@variable.member" },
-		CmpItemKindVariable = { link = "@variable" },
-		CmpItemKindClass = { link = "Type" },
-		CmpItemKindInterface = { link = "Type" },
-		CmpItemKindModule = { link = "@module" },
-		CmpItemKindProperty = { link = "@property" },
-		CmpItemKindUnit = { link = "Number" },
-		CmpItemKindValue = { link = "String" },
-		CmpItemKindEnum = { link = "Type" },
-		CmpItemKindKeyword = { link = "Keyword" },
-		CmpItemKindSnippet = { link = "Special" },
-		CmpItemKindColor = { link = "Special" },
-		CmpItemKindFile = { link = "Directory" },
-		CmpItemKindReference = { link = "Special" },
-		CmpItemKindFolder = { link = "Directory" },
-		CmpItemKindEnumMember = { link = "Constant" },
-		CmpItemKindConstant = { link = "Constant" },
-		CmpItemKindStruct = { link = "Type" },
-		CmpItemKindEvent = { link = "Type" },
-		CmpItemKindOperator = { link = "Operator" },
-		CmpItemKindTypeParameter = { link = "Type" },
-		CmpItemKindCopilot = { link = "String" },
+		-- -- Cmp
+		-- CmpDocumentation = { link = "NormalFloat" },
+		-- CmpDocumentationBorder = { link = "FloatBorder" },
+		-- CmpCompletion = { link = "Pmenu" },
+		-- CmpCompletionSel = { fg = "NONE", bg = theme.ui.pmenu.bg_sel },
+		-- CmpCompletionBorder = { fg = theme.ui.bg_search, bg = theme.ui.pmenu.bg },
+		-- CmpCompletionThumb = { link = "PmenuThumb" },
+		-- CmpCompletionSbar = { link = "PmenuSbar" },
+		-- CmpItemAbbr = { fg = theme.ui.pmenu.fg },
+		-- CmpItemAbbrDeprecated = { fg = theme.syn.comment, strikethrough = true },
+		-- CmpItemAbbrMatch = { fg = theme.syn.fun },
+		-- CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
+		-- CmpItemKindDefault = { fg = theme.ui.fg_dim },
+		-- CmpItemMenu = { fg = theme.ui.fg_dim },
+		-- CmpItemKindText = { fg = theme.ui.fg },
+		-- CmpItemKindMethod = { link = "@function.method" },
+		-- CmpItemKindFunction = { link = "Function" },
+		-- CmpItemKindConstructor = { link = "@constructor" },
+		-- CmpItemKindField = { link = "@variable.member" },
+		-- CmpItemKindVariable = { link = "@variable" },
+		-- CmpItemKindClass = { link = "Type" },
+		-- CmpItemKindInterface = { link = "Type" },
+		-- CmpItemKindModule = { link = "@module" },
+		-- CmpItemKindProperty = { link = "@property" },
+		-- CmpItemKindUnit = { link = "Number" },
+		-- CmpItemKindValue = { link = "String" },
+		-- CmpItemKindEnum = { link = "Type" },
+		-- CmpItemKindKeyword = { link = "Keyword" },
+		-- CmpItemKindSnippet = { link = "Special" },
+		-- CmpItemKindColor = { link = "Special" },
+		-- CmpItemKindFile = { link = "Directory" },
+		-- CmpItemKindReference = { link = "Special" },
+		-- CmpItemKindFolder = { link = "Directory" },
+		-- CmpItemKindEnumMember = { link = "Constant" },
+		-- CmpItemKindConstant = { link = "Constant" },
+		-- CmpItemKindStruct = { link = "Type" },
+		-- CmpItemKindEvent = { link = "Type" },
+		-- CmpItemKindOperator = { link = "Operator" },
+		-- CmpItemKindTypeParameter = { link = "Type" },
+		-- CmpItemKindCopilot = { link = "String" },
 
 		-- IndentBlankline
 		IndentBlanklineChar = { fg = theme.ui.indent },
@@ -360,36 +287,6 @@ function M.setup(colors, opts)
 		BufferTabpages = { bg = theme.ui.bg_tabline, fg = palette.dragonWhite, bold = true },
 		BufferTabpageFill = { link = "BufferlineFill" },
 		BufferTabpagesSep = { link = "BufferTabpages" },
-
-		-- Nvim-Navic
-		NavicIconsFile = { link = "Directory" },
-		NavicIconsModule = { link = "@module" },
-		NavicIconsNamespace = { link = "@module" },
-		NavicIconsPackage = { link = "@module" },
-		NavicIconsClass = { link = "Type" },
-		NavicIconsMethod = { link = "@function.method" },
-		NavicIconsProperty = { link = "@property" },
-		NavicIconsField = { link = "@variable.member" },
-		NavicIconsConstructor = { link = "@constructor" },
-		NavicIconsEnum = { link = "Type" },
-		NavicIconsInterface = { link = "Type" },
-		NavicIconsFunction = { link = "Function" },
-		NavicIconsVariable = { link = "@variable" },
-		NavicIconsConstant = { link = "Constant" },
-		NavicIconsString = { link = "String" },
-		NavicIconsNumber = { link = "Number" },
-		NavicIconsBoolean = { link = "Boolean" },
-		NavicIconsArray = { link = "Type" },
-		NavicIconsObject = { link = "Type" },
-		NavicIconsKey = { link = "Identifier" },
-		NavicIconsNull = { link = "Type" },
-		NavicIconsEnumMember = { link = "Constant" },
-		NavicIconsStruct = { link = "Structure" },
-		NavicIconsEvent = { link = "Structure" },
-		NavicIconsOperator = { link = "Operator" },
-		NavicIconsTypeParameter = { link = "Type" },
-		NavicText = { fg = theme.ui.fg },
-		NavicSeparator = { fg = theme.ui.fg },
 
 		-- Aerial icons
 		AerialFileIcon = { link = "Directory" },
@@ -576,8 +473,8 @@ function M.setup(colors, opts)
 		MiniStatuslineInactive = { link = "StatusLineNC" },
 		MiniStatuslineModeCommand = { fg = theme.ui.bg, bg = theme.modes.command, bold = true },
 		MiniStatuslineModeInsert = { fg = theme.ui.bg, bg = theme.modes.insert, bold = true },
-		MiniStatuslineModeNormal = { fg = theme.ui.bg_m3, bg = theme.modes.normal, bold = true },
-		MiniStatuslineModeOther = { fg = theme.ui.bg_m3, bg = theme.modes.normal, bold = true },
+		MiniStatuslineModeNormal = { fg = theme.ui.bg_m1, bg = theme.modes.normal, bold = true },
+		MiniStatuslineModeOther = { fg = theme.ui.bg_m1, bg = theme.modes.normal, bold = true },
 		MiniStatuslineModeReplace = { fg = theme.ui.bg, bg = theme.modes.replace, bold = true },
 		MiniStatuslineModeVisual = { fg = theme.ui.bg, bg = theme.modes.visual, bold = true },
 
@@ -585,12 +482,12 @@ function M.setup(colors, opts)
 
 		MiniTablineCurrent = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1, bold = true },
 		MiniTablineFill = { link = "TabLineFill" },
-		MiniTablineHidden = { fg = theme.ui.special, bg = theme.ui.bg_m3 },
+		MiniTablineHidden = { fg = theme.ui.special, bg = theme.ui.bg_m1 },
 		MiniTablineModifiedCurrent = { fg = theme.ui.bg_p1, bg = theme.ui.fg_dim, bold = true },
-		MiniTablineModifiedHidden = { fg = theme.ui.bg_m3, bg = theme.ui.special },
-		MiniTablineModifiedVisible = { fg = theme.ui.bg_m3, bg = theme.ui.special, bold = true },
+		MiniTablineModifiedHidden = { fg = theme.ui.bg_m1, bg = theme.ui.special },
+		MiniTablineModifiedVisible = { fg = theme.ui.bg_m1, bg = theme.ui.special, bold = true },
 		MiniTablineTabpagesection = { fg = theme.ui.fg, bg = theme.ui.bg_search, bold = true },
-		MiniTablineVisible = { fg = theme.ui.special, bg = theme.ui.bg_m3, bold = true },
+		MiniTablineVisible = { fg = theme.ui.special, bg = theme.ui.bg_m1, bold = true },
 
 		MiniTestEmphasis = { bold = true },
 		MiniTestFail = { fg = theme.diag.error, bold = true },
@@ -625,6 +522,18 @@ function M.setup(colors, opts)
 		OverseerFAILURE = { fg = theme.diag.error },
 		OverseerTaskBorder = { fg = theme.ui.win_separator },
 	}
+
+	-- merge highlights
+	for group, active in pairs(opts.integrations) do
+		if active == true then
+			local I = require("kanagawa-groove.highlights.integrations." .. group)
+			for k, v in pairs(I.get(colors, opts)) do
+				ret[k] = v
+			end
+		end
+	end
+
+	return ret
 end
 
 return M

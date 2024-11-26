@@ -10,7 +10,7 @@ local defaults = {
 	undercurl = true,
 	transparent = false,
 	gutter = false,
-	dimInactive = true, -- disabled when transparent
+	dimInactive = false, -- disabled when transparent
 	terminalColors = true,
 	commentStyle = { italic = true },
 	functionStyle = { italic = false },
@@ -18,6 +18,15 @@ local defaults = {
 	statementStyle = { italic = false, bold = false },
 	typeStyle = { italic = false },
 	colors = { theme = {}, palette = {} },
+	integrations = {
+		["navic"] = true,
+		["nvim-cmp"] = true,
+		["gitsigns"] = true,
+		["gitgutter"] = true,
+		["telescope"] = true,
+		["nvim-tree"] = true,
+		["neotree"] = true,
+	},
 	---@type fun(colors: KanagawaColorsSpec): table<string, table>
 	overrides = function()
 		return {}

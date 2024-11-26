@@ -57,15 +57,17 @@
 ---@field fg ColorSpec Default foreground
 ---@field fg_gray ColorSpec Slightly darker, offwhite
 ---@field fg_dim ColorSpec Dimmed foreground
+---@field fg_dimmer ColorSpec Dimmer foreground
 ---@field fg_dark ColorSpec Dark foreground text
 ---@field fg_reverse ColorSpec
 ---@field bg_dim ColorSpec Dimmed background
----@field bg_m3 ColorSpec Darker background
----@field bg_m2 ColorSpec
 ---@field bg_m1 ColorSpec Darkest background
 ---@field bg ColorSpec Default background
 ---@field bg_p1 ColorSpec Lighter background ColorColumn, Folded, Gutter
 ---@field bg_p2 ColorSpec Lighter background Cursor{Line,Column}, TabLineSel (Selected Items)
+---@field bg_p3 ColorSpec Lighter background ColorColumn, Folded, Gutter
+---@field bg_p4 ColorSpec Lighter background ColorColumn, Folded, Gutter
+---@field bg_p5 ColorSpec Lighter background ColorColumn, Folded, Gutter
 ---@field bg_gutter ColorSpec {Sign,Fold}Column, LineNr
 ---@field bg_search ColorSpec
 ---@field bg_cursorline ColorSpec
@@ -116,13 +118,13 @@
 ---@param palette PaletteColors
 ---@return ThemeColors
 return function(palette)
-	local gutter_bg = require("kanagawa-groove.config").options.gutter and palette.sumiInk4 or "none"
+	-- local gutter_bg = require("kanagawa-groove.config").options.gutter and palette.sumiInk4 or "NONE"
 
 	return {
 		modes = {
-			normal = palette.dragonYellow,
+			normal = palette.dragonAsh,
 			insert = palette.dragonRed,
-			visual = palette.springViolet1,
+			visual = palette.oniViolet,
 			replace = palette.dragonRed,
 			command = palette.dragonYellow,
 		},
@@ -130,42 +132,45 @@ return function(palette)
 			fg = palette.fujiWhite,
 			fg_gray = palette.fujiGray,
 			fg_dark = palette.dragonBlack3,
-			fg_dim = palette.dragonBlack5,
+			fg_dim = palette.fujiWhite2,
+			fg_dimmer = palette.sumiInk8,
 			fg_reverse = palette.waveBlue1,
 
-			bg_m3 = palette.sumiInk0,
-			bg_m2 = palette.sumiInk1,
-			bg_m1 = palette.sumiInk2,
+			bg_m1 = palette.sumiInk0,
 			bg = palette.sumiInk1,
-			bg_p1 = palette.sumiInk4,
-			bg_p2 = palette.sumiInk5,
+			bg_p1 = palette.sumiInk2,
+			bg_p2 = palette.sumiInk3,
+			bg_p3 = palette.sumiInk4,
+			bg_p4 = palette.sumiInk5,
+			bg_p5 = palette.sumiInk6,
 			bg_dim = palette.sumiInk1,
-			bg_gutter = gutter_bg,
+			bg_gutter = "NONE",
 			bg_search = palette.springViolet1,
 			bg_cursorline = palette.sumiInk5,
-			bg_visual = palette.lotusInk0,
+			bg_visual = palette.sumiInk6,
 			bg_tabline = palette.sumiInk0,
 
 			special = palette.springViolet1,
 			nontext = palette.sumiInk6,
 			whitespace = palette.sumiInk6,
 
-			win_separator = palette.sumiInk5,
+			win_separator = palette.sumiInk6,
 			indent = palette.sumiInk5,
 			picker = palette.dragonRed,
 			pmenu = {
 				fg = palette.fujiWhite,
-				fg_sel = "none", -- This is important to make highlights pass-through
-				bg = palette.sumiInk4,
+				fg_sel = "NONE", -- This is important to make highlights pass-through
+				bg = palette.sumiInk3,
 				bg_sel = palette.sumiInk6,
 				bg_sbar = palette.sumiInk5,
 				bg_thumb = palette.sumiInk6,
 			},
 			float = {
 				fg = palette.oldWhite,
-				bg = palette.sumiInk4,
-				fg_border = palette.sumiInk6,
-				bg_border = "none",
+				bg = palette.sumiInk3,
+				fg_border = palette.sumiInk1,
+				bg_border = palette.sumiInk3,
+
 			},
 		},
 		rainbow = {
@@ -179,7 +184,7 @@ return function(palette)
 		},
 		syn = {
 			string = palette.dragonGreen2,
-			variable = "none",
+			variable = "NONE",
 			member = palette.fujiWhite,
 			number = palette.dragonPink,
 			constant = palette.dragonOrange,
@@ -195,7 +200,7 @@ return function(palette)
 			regex = palette.dragonRed,
 			deprecated = palette.katanaGray,
 			punct = palette.dragonGray2,
-			comment = palette.fujiGray,
+			comment = palette.sumiInk8,
 			special1 = palette.dragonTeal,
 			special2 = palette.dragonRed,
 			special3 = palette.dragonBlue,

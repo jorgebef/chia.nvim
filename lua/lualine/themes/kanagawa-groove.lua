@@ -4,7 +4,7 @@ local theme = colors.theme
 local kanagawa_paper = {}
 
 kanagawa_paper.normal = {
-	a = { bg = theme.modes.normal, fg = theme.ui.bg_m3 },
+	a = { bg = theme.modes.normal, fg = theme.ui.bg_m1 },
 	b = { bg = theme.ui.bg_p2, fg = theme.modes.normal },
 	c = { bg = theme.ui.bg_p1, fg = theme.ui.fg_gray },
 }
@@ -30,9 +30,9 @@ kanagawa_paper.replace = {
 }
 
 kanagawa_paper.inactive = {
-	a = { bg = theme.ui.bg_m3, fg = theme.ui.fg_gray },
-	b = { bg = theme.ui.bg_m3, fg = theme.ui.fg_gray, gui = "bold" },
-	c = { bg = theme.ui.bg_m3, fg = theme.ui.fg_gray },
+	a = { bg = theme.ui.bg_m1, fg = theme.ui.fg_gray },
+	b = { bg = theme.ui.bg_m1, fg = theme.ui.fg_gray, gui = "bold" },
+	c = { bg = theme.ui.bg_m1, fg = theme.ui.fg_gray },
 }
 
 if vim.g.kanagawa_paper_lualine_bold then
