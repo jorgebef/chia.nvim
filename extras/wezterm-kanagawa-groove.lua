@@ -3,16 +3,16 @@ local M = {}
 ---@class WeztermPaletteColors
 M.palette = {
 	-- Bg Shades
-	sumiInk0 = "#16161D",
-	sumiInk1 = "#181820", --bg
-	sumiInk2 = "#1a1a22",
-	sumiInk3 = "#1F1F28",
+	sumiInk0 = "#13131A",
+	sumiInk1 = "#181820",
+	sumiInk2 = "#1a1a22", --bg
+	sumiInk3 = "#24242F",
 	sumiInk4 = "#2A2A37",
 	-- sumiInk5 = "#363646",
 	-- sumiInk6 = "#54546D",
 	sumiInk5 = "#303039",
-	sumiInk6 = "#383845",
-	sumiInk7 = "#545462",
+	sumiInk6 = "#3C3C48",
+	sumiInk7 = "#545461",
 	sumiInk8 = "#60606C",
 
 	-- Popup and Floats
@@ -37,9 +37,15 @@ M.palette = {
 	-- Fg and Comments
 	-- oldWhite = "#C8C093",
 	oldWhite = "#B8B093",
-	fujiWhite = "#D5D0C6",
+	oldWhite2 = "#C7C0AD",
+	fujiWhite = "#D2CCC0",
+	fujiWhite2 = "#AEADAF",
+	fujiWhite3 = "#9E9D9F",
+	fujiGray = "#727169",
 	fujiGray2 = "#626159",
 	fujiGray3 = "#5D5C54",
+	fujiBlack = "#060503",
+	fujiBlack2 = "#111012",
 
 	oniViolet = "#957FB8",
 	oniViolet2 = "#b8b4d0",
@@ -137,11 +143,11 @@ M.palette = {
 
 M.colors = {
 	foreground = M.palette.dragonWhite,
-	background = M.palette.sumiInk1,
+	background = M.palette.sumiInk2,
 
 	ansi = {
-		M.palette.dragonBlack0,
-		M.palette.dragonRed,
+		M.palette.fujiBlack,
+		M.palette.autumnRed,
 		M.palette.autumnGreen,
 		M.palette.autumnYellow,
 		M.palette.dragonBlue2,
@@ -150,7 +156,7 @@ M.colors = {
 		M.palette.fujiWhite,
 	},
 	brights = {
-		M.palette.dragonGray,
+		M.palette.fujiGray3,
 		M.palette.waveRed,
 		M.palette.dragonGreen2,
 		M.palette.roninYellow,

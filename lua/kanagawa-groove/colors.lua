@@ -1,9 +1,9 @@
 ---@class PaletteColors
 local palette = {
 	-- Bg Shades
-	sumiInk0 = "#16161D",
-	sumiInk1 = "#181820", --bg
-	sumiInk2 = "#1a1a22",
+	sumiInk0 = "#13131A",
+	sumiInk1 = "#181820",
+	sumiInk2 = "#1a1a22", --bg
 	sumiInk3 = "#24242F",
 	sumiInk4 = "#2A2A37",
 	-- sumiInk5 = "#363646",
@@ -35,8 +35,10 @@ local palette = {
 	-- Fg and Comments
 	-- oldWhite = "#C8C093",
 	oldWhite = "#B8B093",
-	fujiWhite = "#D5D0C6",
-	fujiWhite2 = "#9E9D9F",
+	oldWhite2 = "#C7C0AD",
+	fujiWhite = "#D2CCC0",
+	fujiWhite2 = "#AEADAF",
+	fujiWhite3 = "#9E9D9F",
 	fujiGray = "#727169",
 	fujiGray2 = "#626159",
 	fujiGray3 = "#5D5C54",

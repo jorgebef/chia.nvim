@@ -26,6 +26,7 @@ local defaults = {
 		["telescope"] = true,
 		["nvim-tree"] = true,
 		["neotree"] = true,
+		["mini"] = true,
 	},
 	---@type fun(colors: KanagawaColorsSpec): table<string, table>
 	overrides = function()
