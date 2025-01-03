@@ -148,11 +148,11 @@ M.colors = {
 	ansi = {
 		M.palette.fujiBlack,
 		M.palette.autumnRed,
-		M.palette.autumnGreen,
-		M.palette.autumnYellow,
-		M.palette.dragonBlue2,
-		M.palette.lotusPink,
-		M.palette.dragonAqua,
+		M.palette.springGreen,
+		M.palette.roninYellow,
+		M.palette.springBlue,
+		M.palette.sakuraPink,
+		M.palette.dragonBlue,
 		M.palette.fujiWhite,
 	},
 	brights = {

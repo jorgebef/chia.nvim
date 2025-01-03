@@ -183,7 +183,7 @@ return function(palette)
 			rainbow7 = palette.dragonTeal,
 		},
 		syn = {
-			string = palette.dragonGreen2,
+			string = palette.springGreen2,
 			variable = "NONE",
 			member = palette.fujiWhite,
 			number = palette.dragonPink,
@@ -210,7 +210,7 @@ return function(palette)
 			addedDark = palette.winterGreen,
 			removed = palette.autumnRed,
 			removedDark = palette.winterRed,
-			changed = palette.autumnYellow,
+			changed = palette.roninYellow,
 			changedDark = palette.winterYellow,
 		},
 		diff = {
@@ -226,7 +226,7 @@ return function(palette)
 		diag = {
 			error = palette.autumnRed,
 			ok = palette.autumnGreen,
-			warning = palette.autumnYellow,
+			warning = palette.roninYellow,
 			info = palette.dragonBlue,
 			hint = palette.waveAqua1,
 		},

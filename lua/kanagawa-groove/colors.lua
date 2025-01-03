@@ -6,8 +6,6 @@ local palette = {
 	sumiInk2 = "#1a1a22", --bg
 	sumiInk3 = "#24242F",
 	sumiInk4 = "#2A2A37",
-	-- sumiInk5 = "#363646",
-	-- sumiInk6 = "#54546D",
 	sumiInk5 = "#303039",
 	sumiInk6 = "#3C3C48",
 	sumiInk7 = "#545461",
@@ -60,6 +58,7 @@ local palette = {
 	-- waveAqua3  = "#68AD99",
 
 	springGreen = "#98BB6C",
+	springGreen2 = "#919E7A",
 	boatYellow1 = "#938056",
 	boatYellow2 = "#C0A36E",
 	carpYellow = "#E6C384",

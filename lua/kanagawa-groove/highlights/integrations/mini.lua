@@ -7,8 +7,8 @@ function M.get(colors, opts)
 	local palette = colors.palette
 
 	return {
-		MiniIndentscopeSymbol = { fg = palette.sumiInk6 },
-		MiniIndentscopeSymbolOff = { fg = palette.sumiInk6 },
+		MiniIndentscopeSymbol = { fg = palette.sumiInk7 },
+		MiniIndentscopeSymbolOff = { fg = palette.sumiInk4 },
 	}
 end
 
