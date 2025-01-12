@@ -1,6 +1,6 @@
 #!/usr/bin/fish
 
-# Kanagawa Groove Fish shell theme
+# Chia Fish shell theme
 set -l foreground c5c9c5 normal
 set -l selection 658594 brcyan
 set -l comment 606071 brblack

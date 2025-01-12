@@ -3,17 +3,17 @@ local M = {}
 ---@param colors KanagawaColors
 ---@param opts? KanagawaConfig
 function M.setup(colors, opts)
-	opts = opts or require("kanagawa-groove.config").options
+	opts = opts or require("chia.config").options
 	local theme = colors.theme
-	local palette = colors.palette
+	-- local palette = colors.palette
 
 	return {
 		-- @variable                       various variable names
 		["@variable"] = { fg = theme.ui.fg },
 		-- @variable.builtin (Special)     built-in variable names (e.g. `this`, `self`)
-		["@variable.builtin"] = { fg = theme.syn.special2, italic = true },
+		["@variable.builtin"] = { fg = theme.syn.special1, italic = true },
 		-- @variable.parameter             parameters of a function
-		["@variable.parameter"] = { fg = theme.syn.parameter },
+		["@variable.parameter"] = { fg = theme.syn.parameter, italic = true },
 		-- @variable.parameter.builtin     special parameters (e.g. `_`, `it`)
 		-- @variable.member                object and struct fields
 		["@variable.member"] = { fg = theme.syn.member },
@@ -37,7 +37,7 @@ function M.setup(colors, opts)
 		["@string.special.symbol"] = { fg = theme.syn.identifier },
 		-- @string.special.path    filenames
 		-- @string.special.url (Underlined)     URIs (e.g. hyperlinks)
-		["@string.special.url"] = { fg = theme.syn.special1, undercurl = true },
+		["@string.special.url"] = { fg = theme.syn.special4, italic = true },
 		-- @character              character literals
 		-- @character.special      special characters (e.g. wildcards)
 		--
@@ -56,6 +56,7 @@ function M.setup(colors, opts)
 		--
 		-- @function               function definitions
 		-- @function.builtin       built-in functions
+		["@function.builtin"] = { fg = theme.syn.preproc },
 		-- @function.call          function calls
 		-- @function.macro         preprocessor macros
 		--
@@ -71,15 +72,17 @@ function M.setup(colors, opts)
 		-- @keyword                keywords not fitting into specific categories
 		-- @keyword.coroutine      keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
 		-- @keyword.function       keywords that define a function (e.g. `func` in Go, `def` in Python)
+		["@keyword.function"] = { fg = theme.syn.preproc },
 		-- @keyword.operator       operators that are English words (e.g. `and`, `or`)
 		["@keyword.operator"] = { fg = theme.syn.operator, bold = true },
 		-- @keyword.import         keywords for including modules (e.g. `import`, `from` in Python)
 		["@keyword.import"] = { link = "PreProc" },
+		["@keyword.export.tsx"] = { fg = theme.syn.special5 },
 		-- @keyword.type           keywords defining composite types (e.g. `struct`, `enum`)
 		-- @keyword.modifier       keywords defining type modifiers (e.g. `const`, `static`, `public`)
 		-- @keyword.repeat         keywords related to loops (e.g. `for`, `while`)
 		-- @keyword.return         keywords like `return` and `yield`
-		["@keyword.return"] = vim.tbl_extend("force", { fg = theme.syn.special3 }, opts.keywordStyle),
+		["@keyword.return"] = vim.tbl_extend("force", { fg = theme.syn.preproc }, opts.keywordStyle),
 		-- @keyword.debug          keywords related to debugging
 		-- @keyword.exception      keywords related to exceptions (e.g. `throw`, `catch`)
 		["@keyword.exception"] = vim.tbl_extend("force", { fg = theme.syn.special3 }, opts.statementStyle),
@@ -154,7 +157,9 @@ function M.setup(colors, opts)
 		["@diff.delta"] = { fg = theme.vcs.changed },
 		--
 		-- @tag                    XML-style tag names (e.g. in XML, HTML, etc.)
+		["@tag"] = { fg = theme.syn.fun },
 		-- @tag.builtin            XML-style tag names (e.g. HTML5 tags)
+		["@tag.builtin"] = { fg = theme.syn.fun },
 		-- @tag.attribute          XML-style tag attributes
 		["@tag.attribute"] = { fg = theme.syn.attribute },
 		-- @tag.delimiter          XML-style tag delimiters

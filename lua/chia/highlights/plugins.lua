@@ -3,9 +3,9 @@ local M = {}
 ---@param colors KanagawaColors
 ---@param opts? KanagawaConfig
 function M.setup(colors, opts)
-	opts = opts or require("kanagawa-groove.config").options
+	opts = opts or require("chia.config").options
 
-	local color = require("kanagawa-groove.lib.color")
+	local color = require("chia.lib.color")
 	local theme = colors.theme
 	local palette = colors.palette
 
@@ -107,6 +107,13 @@ function M.setup(colors, opts)
 		healthError = { fg = theme.diag.error },
 		healthSuccess = { fg = theme.diag.ok },
 		healthWarning = { fg = theme.diag.warning },
+
+		-- Blink.cmp
+		BlinkCmpMenuBorder = { fg = theme.ui.float.fg_border, bg = theme.ui.float.bg_border },
+		BlinkCmpMenu = { fg = theme.ui.float.fg, bg = theme.ui.float.bg },
+		BlinkCmpGhostText = { fg = theme.ui.fg_dimmer },
+		BlinkCmpLabelDescription = { fg = theme.ui.fg_dim },
+		BlinkCmpKind = { fg = theme.ui.fg_dimmer },
 
 		-- -- Cmp
 		-- CmpDocumentation = { link = "NormalFloat" },
@@ -526,7 +533,7 @@ function M.setup(colors, opts)
 	-- merge highlights
 	for group, active in pairs(opts.integrations) do
 		if active == true then
-			local I = require("kanagawa-groove.highlights.integrations." .. group)
+			local I = require("chia.highlights.integrations." .. group)
 			for k, v in pairs(I.get(colors, opts)) do
 				ret[k] = v
 			end

@@ -1,16 +1,16 @@
-# 🌊 kanagawa-groove.nvim
+# 🌊 chia.nvim
 
 Remixed Kanagawa colourscheme with muted colors. For Neovim.
 
-![screenshot](https://github.com/jorgebef/kanagawa-groove.nvim/assets/5199715/cf75d935-d8b4-430c-a1d8-04f453151924)
+![screenshot](https://github.com/jorgebef/chia.nvim/assets/5199715/cf75d935-d8b4-430c-a1d8-04f453151924)
 
 ## 💡 Motivation
 
 I love the original [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) colourscheme, but I found some of the colours of the dark themes a bit too bright and distracting. What I wanted was a more muted theme overall, combining the less saturated syntax colours of the dragon theme, while keeping the blue background of the wave theme.
 
-kanagawa-groove combines both the dragon and wave themes, with a few additions and tweaks to work better with certain plugins.
+chia combines both the dragon and wave themes, with a few additions and tweaks to work better with certain plugins.
 
-I have also ported the colourscheme to VSCode, which you can find here: [kanagawa-groove.vscode](https://github.com/jorgebef/kanagawa-groove.vscode)
+I have also ported the colourscheme to VSCode, which you can find here: [chia.vscode](https://github.com/jorgebef/chia.vscode)
 
 ## ⚡️ Requirements
 
@@ -23,7 +23,7 @@ Install the theme with your preferred package manager, such as [lazy.nvim](https
 
 ```lua
 {
-  "jorgebef/kanagawa-groove.nvim",
+  "jorgebef/chia.nvim",
   lazy = false,
   priority = 1000,
   opts = {},
@@ -35,13 +35,13 @@ Install the theme with your preferred package manager, such as [lazy.nvim](https
 ### Vim Script
 
 ```vim
-colorscheme kanagawa-groove
+colorscheme chia
 ```
 
 ### Lua
 
 ```lua
-vim.cmd("colorscheme kanagawa-groove")
+vim.cmd("colorscheme chia")
 ```
 
 ### External Plugins
@@ -49,7 +49,7 @@ vim.cmd("colorscheme kanagawa-groove")
 #### [Lualine](https://github.com/nvim-lualine/lualine.nvim)
 
 ```lua
-local kanagawa_paper = require("lualine.themes.kanagawa-groove")
+local kanagawa_paper = require("lualine.themes.chia")
 
 require('lualine').setup {
   options = {
@@ -61,10 +61,10 @@ require('lualine').setup {
 
 ## ⚙️ Configuration
 
-> ❗️ Set the configuration **BEFORE** loading the color scheme with `colorscheme kanagawa-groove`.
+> ❗️ Set the configuration **BEFORE** loading the color scheme with `colorscheme chia`.
 
 ```lua
-require('kanagawa-groove').setup({
+require('chia').setup({
   undercurl = true,
   transparent = false,
   gutter = false,
@@ -82,10 +82,10 @@ require('kanagawa-groove').setup({
 })
 
 -- setup must be called before loading
-vim.cmd("colorscheme kanagawa-groove")
+vim.cmd("colorscheme chia")
 ```
 
-The code that defines the default configuration can be found [here](lua/kanagawa-groove/config.lua)
+The code that defines the default configuration can be found [here](lua/chia/config.lua)
 
 ## 🔧 Customizing Colors
 
@@ -99,11 +99,11 @@ In short, a `palette` defines all the available colors, while a `theme` maps the
 to specific `ThemeColors` and the same palette color may be assigned to multiple theme colors.
 
 You can change _both_ theme or palette colors using `config.colors`.
-All the palette color names can be found [here](lua/kanagawa-groove/colors.lua),
-while their usage by each theme can be found [here](lua/kanagawa-groove/themes.lua).
+All the palette color names can be found [here](lua/chia/colors.lua),
+while their usage by each theme can be found [here](lua/chia/themes.lua).
 
 ```lua
-require('kanagawa-groove').setup({
+require('chia').setup({
     colors = {
         palette = {
             -- change all usages of these color names
@@ -126,7 +126,7 @@ You can also conveniently add/modify `hlgroups` using the `config.overrides` opt
 Supported keywords are the same for `:h nvim_set_hl` `{val}` parameter.
 
 ```lua
-require('kanagawa-groove').setup({
+require('chia').setup({
     overrides = function(colors)
         return {
             -- Assign a static color to strings
@@ -138,13 +138,13 @@ require('kanagawa-groove').setup({
 })
 ```
 
-You can find a more detailed explanation of color customization [here](https://github.com/jorgebef/kanagawa-groove.nvim/issues/3#issuecomment-2183665367).
+You can find a more detailed explanation of color customization [here](https://github.com/jorgebef/chia.nvim/issues/3#issuecomment-2183665367).
 
 ### Extracting colors
 
 ```lua
 -- Get the colors for the current theme
-local colors = require("kanagawa-groove.colors").setup()
+local colors = require("chia.colors").setup()
 local palette_colors = colors.palette
 local theme_colors = colors.theme
 ```
@@ -208,7 +208,7 @@ end,
 - [fish](extras/kanagawa_paper.fish)
 - [kitty](extras/kitty_kanagawa_paper.conf)
 - [pywal](extras/pywal-theme.json)
-- [vscode](https://github.com/jorgebef/kanagawa-groove.vscode) (official port)
+- [vscode](https://github.com/jorgebef/chia.vscode) (official port)
 - [vscode terminal](extras/vscode_terminal.json) (guide: [Visual Studio Code Theme Color](https://code.visualstudio.com/api/references/theme-color))
 - [wezterm](extras/wezterm.lua) (guide: [Defining a Color Scheme in a separate file](https://wezfurlong.org/wezterm/config/appearance.html#defining-a-color-scheme-in-a-separate-file))
 - [wezterm tabline](extras/wezterm_tabline.lua) (guide: [tabline.wez](https://github.com/michaelbrusegard/tabline.wez))

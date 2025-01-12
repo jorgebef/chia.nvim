@@ -1,4 +1,4 @@
-local hsluv = require("kanagawa-groove.lib.hsluv")
+local hsluv = require("chia.lib.hsluv")
 
 ---@class HSLuvColor
 local Color = {}

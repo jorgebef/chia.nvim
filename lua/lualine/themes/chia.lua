@@ -1,44 +1,44 @@
-local colors = require("kanagawa-groove.colors").setup()
+local colors = require("chia.colors").setup()
 local theme = colors.theme
 
-local kanagawa_paper = {}
+local chia = {}
 
-kanagawa_paper.normal = {
+chia.normal = {
 	a = { bg = theme.modes.normal, fg = theme.ui.bg_m1 },
 	b = { bg = theme.ui.bg_p2, fg = theme.modes.normal },
 	c = { bg = theme.ui.bg_p1, fg = theme.ui.fg_gray },
 }
 
-kanagawa_paper.insert = {
+chia.insert = {
 	a = { bg = theme.modes.insert, fg = theme.ui.bg },
 	b = { bg = theme.ui.bg_p2, fg = theme.modes.insert },
 }
 
-kanagawa_paper.command = {
+chia.command = {
 	a = { bg = theme.modes.command, fg = theme.ui.bg },
 	b = { bg = theme.ui.bg_p2, fg = theme.modes.command },
 }
 
-kanagawa_paper.visual = {
+chia.visual = {
 	a = { bg = theme.modes.visual, fg = theme.ui.bg },
 	b = { bg = theme.ui.bg_p2, fg = theme.modes.visual },
 }
 
-kanagawa_paper.replace = {
+chia.replace = {
 	a = { bg = theme.modes.replace, fg = theme.ui.bg },
 	b = { bg = theme.ui.bg_p2, fg = theme.modes.replace },
 }
 
-kanagawa_paper.inactive = {
+chia.inactive = {
 	a = { bg = theme.ui.bg_m1, fg = theme.ui.fg_gray },
 	b = { bg = theme.ui.bg_m1, fg = theme.ui.fg_gray, gui = "bold" },
 	c = { bg = theme.ui.bg_m1, fg = theme.ui.fg_gray },
 }
 
-if vim.g.kanagawa_paper_lualine_bold then
-	for _, mode in pairs(kanagawa_paper) do
+if vim.g.chia_lualine_bold then
+	for _, mode in pairs(chia) do
 		mode.a.gui = "bold"
 	end
 end
 
-return kanagawa_paper
+return chia

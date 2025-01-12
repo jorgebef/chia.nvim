@@ -1,5 +1,5 @@
-# Kanagawa Paper Wezterm Colors
-# Upstream: https://github.com/jorgebef/kanagawa-groove.nvim/blob/master/extras/wezterm.toml
+# Chia Paper Wezterm Colors
+# Upstream: https://github.com/jorgebef/chia.nvim/blob/master/extras/wezterm.toml
 
 [colors]
 ansi = [
@@ -37,5 +37,5 @@ split = '#8992a7'
 17 = '#ff5d62'
 
 [metadata]
-name = 'kanagawa-groove'
-origin_url = 'https://github.com/jorgebef/kanagawa-groove.nvim/blob/master/extras/wezterm.toml'
+name = 'chia'
+origin_url = 'https://github.com/jorgebef/chia.nvim/blob/master/extras/wezterm.toml'

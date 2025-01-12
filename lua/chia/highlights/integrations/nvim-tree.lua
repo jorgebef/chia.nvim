@@ -2,7 +2,7 @@ local M = {}
 
 ---@type KanagawaHighlightsFn
 function M.get(colors, opts)
-	local color = require("kanagawa-groove.lib.color")
+	local color = require("chia.lib.color")
 	local theme = colors.theme
 	local palette = colors.palette
 

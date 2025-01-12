@@ -14,11 +14,11 @@ end
 ---@param colors KanagawaColors
 ---@param opts? KanagawaConfig
 function M.setup(colors, opts)
-	opts = opts or require("kanagawa-groove.config").options
+	opts = opts or require("chia.config").options
 
 	local highlights = {}
 	for _, highlight in ipairs({ "editor", "syntax", "treesitter", "lsp", "plugins", "ft" }) do
-		local mod = require("kanagawa-groove.highlights." .. highlight)
+		local mod = require("chia.highlights." .. highlight)
 		for hl, spec in pairs(mod.setup(colors, opts)) do
 			highlights[hl] = spec
 		end
