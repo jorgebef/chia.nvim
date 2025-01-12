@@ -1,0 +1,274 @@
+*kanagawa-groove.nvim.txt*     For NVIM v0.8.0    Last change: 2025 January 12
+
+==============================================================================
+Table of Contents                     *kanagawa-groove.nvim-table-of-contents*
+
+1. chia.nvim                                  |kanagawa-groove.nvim-chia.nvim|
+  - Motivation                               |kanagawa-groove.nvim-motivation|
+  - Requirements                           |kanagawa-groove.nvim-requirements|
+  - Installation                           |kanagawa-groove.nvim-installation|
+  - Usage                                         |kanagawa-groove.nvim-usage|
+  - Configuration                         |kanagawa-groove.nvim-configuration|
+  - Customizing Colors               |kanagawa-groove.nvim-customizing-colors|
+  - Extras                                       |kanagawa-groove.nvim-extras|
+  - Acknowledgements                   |kanagawa-groove.nvim-acknowledgements|
+2. Links                                          |kanagawa-groove.nvim-links|
+
+==============================================================================
+1. chia.nvim                                  *kanagawa-groove.nvim-chia.nvim*
+
+Remixed Kanagawa colourscheme with muted colors. For Neovim.
+
+
+MOTIVATION                                   *kanagawa-groove.nvim-motivation*
+
+I love the original kanagawa.nvim <https://github.com/rebelot/kanagawa.nvim>
+colourscheme, but I found some of the colours of the dark themes a bit too
+bright and distracting. What I wanted was a more muted theme overall, combining
+the less saturated syntax colours of the dragon theme, while keeping the blue
+background of the wave theme.
+
+chia combines both the dragon and wave themes, with a few additions and tweaks
+to work better with certain plugins.
+
+I have also ported the colourscheme to VSCode, which you can find here:
+chia.vscode <https://github.com/jorgebef/chia.vscode>
+
+
+REQUIREMENTS                               *kanagawa-groove.nvim-requirements*
+
+- Neovim <https://github.com/neovim/neovim> >=
+    0.8.0 <https://github.com/neovim/neovim/releases/tag/v0.8.0>
+
+
+INSTALLATION                               *kanagawa-groove.nvim-installation*
+
+Install the theme with your preferred package manager, such as lazy.nvim
+<https://github.com/folke/lazy.nvim>
+
+>lua
+    {
+      "jorgebef/chia.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
+    }
+<
+
+
+USAGE                                             *kanagawa-groove.nvim-usage*
+
+
+VIM SCRIPT ~
+
+>vim
+    colorscheme chia
+<
+
+
+LUA ~
+
+>lua
+    vim.cmd("colorscheme chia")
+<
+
+
+EXTERNAL PLUGINS ~
+
+
+LUALINE
+
+>lua
+    local kanagawa_paper = require("lualine.themes.chia")
+    
+    require('lualine').setup {
+      options = {
+        theme = kanagawa_paper
+        -- ... your lualine config
+      }
+    }
+<
+
+
+CONFIGURATION                             *kanagawa-groove.nvim-configuration*
+
+
+  Set the configuration **BEFORE** loading the color scheme with `colorscheme
+  chia`.
+>lua
+    require('chia').setup({
+      undercurl = true,
+      transparent = false,
+      gutter = false,
+      dimInactive = true, -- disabled when transparent
+      terminalColors = true,
+      commentStyle = { italic = true },
+      functionStyle = { italic = false },
+      keywordStyle = { italic = false, bold = false },
+      statementStyle = { italic = false, bold = false },
+      typeStyle = { italic = false },
+      colors = { theme = {}, palette = {} }, -- override default palette and theme colors
+      overrides = function()  -- override highlight groups
+        return {}
+      end,
+    })
+    
+    -- setup must be called before loading
+    vim.cmd("colorscheme chia")
+<
+
+The code that defines the default configuration can be found here
+<lua/chia/config.lua>
+
+
+CUSTOMIZING COLORS                   *kanagawa-groove.nvim-customizing-colors*
+
+There are two kinds of colors: `PaletteColors` and `ThemeColors`.
+
+`PaletteColors` are defined directly as RGB Hex strings, and have arbitrary
+names that recall their actual color. Conversely, `ThemeColors` are named and
+grouped _semantically_ on the basis of their actual function.
+
+In short, a `palette` defines all the available colors, while a `theme` maps
+the `PaletteColors` to specific `ThemeColors` and the same palette color may be
+assigned to multiple theme colors.
+
+You can change _both_ theme or palette colors using `config.colors`. All the
+palette color names can be found here <lua/chia/colors.lua>, while their usage
+by each theme can be found here <lua/chia/themes.lua>.
+
+>lua
+    require('chia').setup({
+        colors = {
+            palette = {
+                -- change all usages of these color names
+                sumiInk0 = "#000000",
+                fujiWhite = "#FFFFFF",
+            },
+            theme = {
+              -- change specific usages for a certain theme
+              ui = {
+                  float = {
+                      bg = colors.palette.sumiInk0,
+                  },
+              },
+            }
+        },
+    })
+<
+
+You can also conveniently add/modify `hlgroups` using the `config.overrides`
+option. Supported keywords are the same for |nvim_set_hl| `{val}` parameter.
+
+>lua
+    require('chia').setup({
+        overrides = function(colors)
+            return {
+                -- Assign a static color to strings
+                String = { fg = colors.palette.carpYellow, italic = true },
+                -- theme colors will update dynamically when you change theme!
+                SomePluginHl = { fg = colors.theme.syn.type, bold = true },
+            }
+        end,
+    })
+<
+
+You can find a more detailed explanation of color customization here
+<https://github.com/jorgebef/chia.nvim/issues/3#issuecomment-2183665367>.
+
+
+EXTRACTING COLORS ~
+
+>lua
+    -- Get the colors for the current theme
+    local colors = require("chia.colors").setup()
+    local palette_colors = colors.palette
+    local theme_colors = colors.theme
+<
+
+
+COMMON CUSTOMIZATIONS ~
+
+
+TRANSPARENT FLOATING WINDOWS
+
+This will make floating windows look nicer with default borders.
+
+For this to work, make sure you’ve set winblend to a non-zero value in your
+config: `vim.opt.winblend = 30`
+
+>lua
+    overrides = function(colors)
+        local theme = colors.theme
+        return {
+            NormalFloat = { bg = "none" },
+            FloatBorder = { bg = "none" },
+            FloatTitle = { bg = "none" },
+    
+            -- Save a hlgroup with dark background and dimmed foreground
+            -- so that you can use it where you still want darker windows.
+            -- E.g.: autocmd TermOpen * setlocal winhighlight=Normal:NormalDark
+            NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+    
+            -- Popular plugins that open floats will link to NormalFloat by default;
+            -- set their background accordingly if you wish to keep them dark and borderless
+            LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+            MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+        }
+    end,
+<
+
+If you’d like to keep the floating windows darker, but you’re unhappy with
+how borders are rendered, consider using characters that are drawn at the edges
+of the box:
+
+>lua
+    { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
+<
+
+
+DARK COMPLETION (POPUP) MENU
+
+More uniform colors for the popup menu.
+
+>lua
+    overrides = function(colors)
+        local theme = colors.theme
+        return {
+            Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },  -- add `blend = vim.o.pumblend` to enable transparency
+            PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+            PmenuSbar = { bg = theme.ui.bg_m1 },
+            PmenuThumb = { bg = theme.ui.bg_p2 },
+        }
+    end,
+<
+
+
+EXTRAS                                           *kanagawa-groove.nvim-extras*
+
+- alacritty <extras/alacritty_kanagawa_paper.yml>
+- fish <extras/kanagawa_paper.fish>
+- kitty <extras/kitty_kanagawa_paper.conf>
+- pywal <extras/pywal-theme.json>
+- vscode <https://github.com/jorgebef/chia.vscode> (official port)
+- vscode terminal <extras/vscode_terminal.json> (guide: Visual Studio Code Theme Color <https://code.visualstudio.com/api/references/theme-color>)
+- wezterm <extras/wezterm.lua> (guide: Defining a Color Scheme in a separate file <https://wezfurlong.org/wezterm/config/appearance.html#defining-a-color-scheme-in-a-separate-file>)
+- wezterm tabline <extras/wezterm_tabline.lua> (guide: tabline.wez <https://github.com/michaelbrusegard/tabline.wez>)
+- windows terminal <extras/windows_terminal.json> (guide: Color schemes in Windows Terminal <https://learn.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes>)
+
+PRs are welcome if you want to add an extra for a specific application.
+
+
+ACKNOWLEDGEMENTS                       *kanagawa-groove.nvim-acknowledgements*
+
+- Kanagawa <https://github.com/rebelot/kanagawa.nvim>
+- Tokyo Night <https://github.com/folke/tokyonight.nvim>
+
+==============================================================================
+2. Links                                          *kanagawa-groove.nvim-links*
+
+1. *screenshot*: https://github.com/jorgebef/chia.nvim/assets/5199715/cf75d935-d8b4-430c-a1d8-04f453151924
+
+Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
+
+vim:tw=78:ts=8:noet:ft=help:norl:
